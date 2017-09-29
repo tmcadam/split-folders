@@ -14,10 +14,10 @@ elif [ ! -d "${myArgs[-1]}" ]; then
     exit 2
 elif array_contains "-d" "${myArgs[@]}" || array_contains "--dry-run" "${myArgs[@]}" ; then
     DRYRUN=1
-else
-    folder="${myArgs[-1]}"
-    files=$(get_files "${folder}")
-    make_directories "${files}" "${folder}" $DRYRUN
-    move_files "${files}" "${folder}" $DRYRUN
-    exit 0
 fi
+
+folder="${myArgs[-1]}"
+files=$(get_files "${folder}")
+make_directories "${files}" "${folder}" $DRYRUN
+move_files "${files}" "${folder}" $DRYRUN
+exit 0

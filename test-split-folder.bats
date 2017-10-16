@@ -3,7 +3,7 @@
 
 setup() {
   source ./split-folder-helpers.sh
-  mkdir -p test_tmp1 test_tmp2
+  mkdir -p test_tmp1 test_tmp2 test_tmp1/A
   touch "test_tmp1/2a.avi" "test_tmp1/4a.avi" "test_tmp1/a 2.avi" "test_tmp1/a1.avi"
   touch "test_tmp1/A3.avi" "test_tmp1/b1.avi" "test_tmp1/C1.avi"
   touch "test_tmp2/a1.avi"
@@ -43,7 +43,6 @@ teardown() {
 @test "Check make_directories creates directories" {
     F=$(get_files "test_tmp1")
     make_directories "${F}" "test_tmp1" 0
-    [ -d "test_tmp1/A" ]
     [ -d "test_tmp1/B" ]
     [ -d "test_tmp1/C" ]
     [ -d "test_tmp1/#" ]
@@ -52,7 +51,6 @@ teardown() {
 @test "Check make_directories doesn't make directories if DRYRUN set" {
     F=$(get_files "test_tmp1")
     make_directories "${F}" "test_tmp1" 1
-    [ ! -d "test_tmp1/A" ]
     [ ! -d "test_tmp1/B" ]
     [ ! -d "test_tmp1/C" ]
     [ ! -d "test_tmp1/#" ]
@@ -120,7 +118,6 @@ teardown() {
     [ ! -f "test_tmp1/C/C1.avi" ]
     [ ! -f "test_tmp1/#/2a.avi" ]
     [ ! -f "test_tmp1/#/4a.avi" ]
-    [ ! -d "test_tmp1/A" ]
     [ ! -d "test_tmp1/B" ]
     [ ! -d "test_tmp1/C" ]
     [ ! -d "test_tmp1/#" ]
@@ -138,7 +135,6 @@ teardown() {
 ## The big one!!
 @test "Check main script executes sucessfully with parameters set correctly" {
     bash split-folder.sh test_tmp1
-    [ -d "test_tmp1/A" ]
     [ -d "test_tmp1/B" ]
     [ -d "test_tmp1/C" ]
     [ -d "test_tmp1/#" ]

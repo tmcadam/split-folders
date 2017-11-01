@@ -9,22 +9,22 @@ Automated tests in bash using [Bash Automated Testing System](https://github.com
 * Install BATS
   ```
   sudo add-apt-repository ppa:duggan/bats --yes
-  sudo apt-get update -qq
-  sudo apt-get install -qq bats
+  sudo apt-get update
+  sudo apt-get install bats
   ```
 * Clone the repo
   ```
   git clone https://github.com/tmcadam/split-folders.git
   ```
 ## Running tests
-* Change directory to the cloned repo location
+* Change directory to the cloned repo
 * Run BATS
   ```
   bats test-split-folder.bats
   ```
 
 ## Usage
-* Change directory to the cloned repo location
+* Change directory to the cloned repo
 * Run the script
     ```
     bash split-folder.sh --help
